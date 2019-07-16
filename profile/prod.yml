@@ -1,0 +1,8 @@
+port_basic: ":8084"
+api_job_url: "http://oscar-controller:8081"
+
+mongo_url: "mongo:27017"
+mongo_db: "oscar"
+mongo_auth: false
+mongo_login: "oscar"
+mongo_pass: "oscar"
