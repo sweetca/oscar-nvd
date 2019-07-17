@@ -9,6 +9,7 @@ import (
 	"runtime"
 	"runtime/debug"
 	"time"
+	"gopkg.in/robfig/cron.v2"
 )
 
 var profileSetup = flag.String("profile", "local", "profile settings file")
@@ -20,6 +21,10 @@ func main() {
 	profile.InitProfile(*profileSetup)
 
 	log.Warn("NVD crawler is running")
+
+	c := cron.New()
+	c.AddFunc(profile.CronExpression, charge)
+	c.Start()
 
 	http.HandleFunc("/", handleHealth)
 
