@@ -10,6 +10,7 @@ import (
 	"github.com/codescoop/oscar-nvd/models"
 	"github.com/codescoop/oscar-nvd/mongodata"
 	"github.com/codescoop/oscar-nvd/times"
+	"github.com/codescoop/oscar-nvd/util"
 	log "github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/mongo"
 	"strconv"
@@ -54,6 +55,12 @@ const (
 )
 
 func Run() bool {
+	job := util.FetchJob()
+	if job == nil {
+		return false
+	}
+	log.Warn("GitHubRelease job started")
+
 	ctx := context.Background()
 	mongoClient := mongodata.InitClient(ctx)
 
@@ -81,8 +88,8 @@ func Run() bool {
 	fetchYear(client.Modidified, &syncProcess, mongoClient, categories, ctx)
 	syncProcess.Wait()
 
+	util.FinishJob(job)
 	log.Infof("done fetching NVD database")
-
 	return true
 }
 

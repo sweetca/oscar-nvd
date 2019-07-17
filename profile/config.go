@@ -70,7 +70,11 @@ func InitProfile(profileName string) {
 			Url:      MongoUrl,
 			Db:       MongoDb})
 
-		util.Setup(util.Config{ApiJob: OssApiJob, PodName: "oscar-nvd-1", Profile: profileName})
+		util.Setup(util.Config{
+			ApiJob:  OssApiJob,
+			PodName: "oscar-nvd-1",
+			Profile: profileName,
+			JobType: "41"})
 	}
 }
 

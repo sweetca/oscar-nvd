@@ -53,7 +53,7 @@ func FetchJob() (job *models.Job) {
 	return
 }
 
-func FinishJob(job models.Job) (err error) {
+func FinishJob(job *models.Job) (err error) {
 	client := &http.Client{}
 	req, _ := http.NewRequest("PUT", fmt.Sprintf("%s/finish_job/%s/%s", config.ApiJob, job.Id, config.PodName), nil)
 	req.Header.Set("Accept", "application/json")

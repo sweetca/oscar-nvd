@@ -3,13 +3,11 @@ package models
 import "time"
 
 type Job struct {
-	Id       string   `json:"id"`
-	Finished bool     `json:"finished"`
-	Locked   bool     `json:"locked"`
-	Type     int32    `json:"type"`
-	Payload  map[string]string  `json:"payload"`
+	Id       string `json:"id"`
+	Finished bool   `json:"finished"`
+	Locked   bool   `json:"locked"`
+	Type     int32  `json:"type"`
 }
-
 
 type CVEMeta struct {
 	Cpe        []string      `bson:"cpe"`
