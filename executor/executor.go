@@ -10,13 +10,13 @@ import (
 	"github.com/codescoop/oscar-nvd/models"
 	"github.com/codescoop/oscar-nvd/mongodata"
 	"github.com/codescoop/oscar-nvd/times"
-	"github.com/codescoop/oscar-nvd/util"
 	log "github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/mongo"
 	"strconv"
 	"strings"
 	"sync"
 	"time"
+	"github.com/codescoop/oscar-nvd/util"
 )
 
 const (
@@ -65,7 +65,7 @@ func Run() bool {
 	mongoClient := mongodata.InitClient(ctx)
 
 	start := client.FirstYear
-	end := client.LastYear
+	end := time.Now().Year()
 	years := make([]string, 0)
 
 	for start <= end {

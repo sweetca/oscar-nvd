@@ -18,7 +18,6 @@ const (
 
 const (
 	FirstYear  = 2002
-	LastYear   = 2019
 	Recent     = "recent"
 	Modidified = "modified"
 )
